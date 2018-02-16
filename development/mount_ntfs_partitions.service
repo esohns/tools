@@ -1,0 +1,22 @@
+[Unit]
+Description=mount ntfs partitions with options that fail to convey via /etc/fstab
+#After=syslog.target network.target
+After=syslog.target
+
+[Service]
+Type=oneshot
+#EnvironmentFile=/etc/sysconfig/mount_ntfs_partitions
+#ExecStartPre=/usr/sbin/sshd-gen-keys-start
+ExecStart=/sbin/mount_ntfs_partitions.sh start
+ExecStop=/sbin/mount_ntfs_partitions.sh stop
+ExecRestart=/sbin/mount_ntfs_partitions.sh restart
+#ExecReload=/sbin/mount_ntfs_partitions.sh reload
+RemainAfterExit=true
+StandardOutput=journal
+#KillMode=process
+#Restart=always
+
+[Install]
+#WantedBy=multi-user.target
+WantedBy=default.target
+

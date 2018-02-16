@@ -1,0 +1,82 @@
+#!/bin/sh
+# Author: Erik Sohns
+#
+# /etc/init.d/mount_ntfs_partitions.init
+# Debian: install with `sudo update-rc.d mount_ntfs_partitions.init default`
+# SuSE:   install with `insserv mount_ntfs_partitions.init`
+#
+### BEGIN INIT INFO
+# Provides:          mount_ntfs_partitions
+# Should-Start:      $local_fs $syslog
+# Required-Start:    $null
+# Required-Stop:     $null
+# Should-Stop:       $local_fs
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: mount ntfs partitions with options that fail to convey via /etc/fstab
+# Description:       mount ntfs partitions with options that fail to convey via /etc/fstab
+### END INIT INFO
+
+. /etc/rc.status
+rc_reset
+
+## Load the LSB shell functions
+#. /lib/lsb/init-functions
+
+case "$1" in
+ start)
+# sanity check(s)
+  test -x /sbin/mount_ntfs_partitions.sh || echo "ERROR: script not found (was: \"/sbin/mount_ntfs_partitions.sh\"), aborting" && exit 6
+
+  echo -e "\E[36mMounting NTFS partitions (start)...\E[0m";
+  startproc -f /sbin/mount_ntfs_partitions.sh start
+  rc_status -v
+#  echo -e "\E[36mMounting NTFS partitions (start)...Done\E[0m";
+  ;;
+ stop)
+# sanity check(s)
+  test -x /sbin/mount_ntfs_partitions.sh || echo "ERROR: script not found (was: \"/sbin/mount_ntfs_partitions.sh\"), aborting" && exit 6
+
+  echo -e "\E[36mMounting NTFS partitions (stop)...\E[0m";
+  startproc -f /sbin/mount_ntfs_partitions.sh stop
+  rc_status -v
+#  echo -e "\E[36mMounting NTFS partitions (stop)...Done\E[0m";
+  ;;
+ try-restart)
+  ## Stop the service and if this succeeds (i.e. the
+  ## service was running before), start it again.
+  $0 status >/dev/null && $0 restart
+  rc_status
+  ;;
+ restart)
+  ## Stop the service and regardless of whether it was
+  ## running or not, start it again.
+  $0 stop
+  $0 start
+  rc_status
+  ;;
+ reload)
+  $0 try-restart
+  ;;
+ force-reload)
+  $0 restart
+  ;;
+ status)
+  startproc -f /sbin/mount_ntfs_partitions.sh status
+  rc_status -v
+  ;;
+ probe)
+  ## Optional: Probe for the necessity of a reload,
+  ## give out the argument which is required for a reload.
+
+  #test /etc/ssh/sshd_config -nt $SSHD_PIDFILE && echo reload
+  ;;
+ *)
+  echo "invalid command \"$1\""
+  echo "usage: $(basename $0) [start|stop]"
+  rc_failed 3
+  ;;
+esac 
+
+rc_exit
+
