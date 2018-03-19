@@ -25,21 +25,27 @@ test -d "${MOUNT_ROOT}" || { echo "ERROR: invalid root mount point (was: \"${MOU
 MOUNT_OPTIONS="permissions,big_writes,dev,suid"
 
 RC_STATUS=0
-declare -a DEVS=(sda1 sda3)
-declare -a MOUNT_POINTS=(win_c win_d)
-i=0
-for DEV in "${DEVS[@]}"
+#declare -a DEVS=(sda1 sda3)
+DEVS="sda1 sda3"
+#declare -a MOUNT_POINTS=(win_c win_d)
+MOUNT_POINTS="win_c win_d"
+#declare -i i
+i=1
+#for DEV in "${DEVS[@]}"
+for DEV in ${DEVS}
 do
 # echo "DEBUG: dev: \"${DEV}\""
  case "$1" in
   start)
    # sanity checks
    if [ ! -r "${DEV_ROOT}/${DEV}" ]; then
-     echo "ERROR: invalid device file/partition (was: \"${DEV_ROOT}/${DEV}\"), continuing"
-     RC_STATUS=1
-     continue
+    echo "ERROR: invalid device file/partition (was: \"${DEV_ROOT}/${DEV}\"), continuing"
+    RC_STATUS=1
+    continue
    fi
-   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
+   MOUNT_POINT=$(echo $MOUNT_POINTS | cut -d' ' -f$i)
+#   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
+   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINT}"
    if [ ! -d "${MOUNT_POINT}" ]; then
     echo "ERROR: invalid mount point (was: \"${MOUNT_POINT}\"), continuing"
     RC_STATUS=1
@@ -55,7 +61,8 @@ do
    echo "mounted ${DEV_ROOT}/${DEV} at ${MOUNT_POINT}"
    ;;
   stop)
-   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
+   MOUNT_POINT=$(echo $MOUNT_POINTS | cut -d' ' -f$i)
+#   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
    test -d "${MOUNT_POINT}" || { echo "ERROR: invalid mount point (was: \"${MOUNT_POINT}\"), continuing"; RC_STATUS=1; continue; }
 
    umount ${MOUNT_POINT} >/dev/null 2>&1
@@ -67,7 +74,8 @@ do
    echo "unmounted \"${MOUNT_POINT}\""
    ;;
   status)
-   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
+   MOUNT_POINT=$(echo $MOUNT_POINTS | cut -d' ' -f$i)
+#   MOUNT_POINT="${MOUNT_ROOT}/${MOUNT_POINTS[$i]}"
    test -d "${MOUNT_POINT}" || { echo "ERROR: invalid mount point (was: \"${MOUNT_POINT}\"), continuing"; exit 1; }
 
    # *TODO*: an empty mount point does not mean the partition has not (!) been
