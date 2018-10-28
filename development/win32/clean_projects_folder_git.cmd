@@ -33,15 +33,16 @@ if NOT exist "%PROJECTSROOTDIR%" (
  echo invalid directory ^(was: "%PROJECTSROOTDIR%"^)^, exiting
  goto Failed
 )
-set GITEXE=%PROGRAMFILES%\Git\cmd\git.exe
+@rem set GITEXE=%PROGRAMFILES%\Git\cmd\git.exe
+set GITEXE=D:\Git\bin\git.exe
 if NOT exist "%GITEXE%" (
  echo git not found ^(was: "%GITEXE%"^)^, exiting
  goto Failed
 )
 
 @rem step1: garbage-collect git projects
-@rem        Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot yarp
-for %%A in (Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot yarp) do (
+@rem        ardrone Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot tools yarp
+for %%A in (ardrone Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot tools yarp) do (
  if NOT exist "%PROJECTSROOTDIR%\%%A" (
   echo invalid git project ^(was: %%A^)^, exiting
   goto Failed

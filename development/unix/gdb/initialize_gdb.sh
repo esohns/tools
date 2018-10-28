@@ -25,7 +25,7 @@ command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&
 #fi
 #echo "DEBUG: platform: \"${PLATFORM}\""
 
-DEFAULT_PROJECTS_DIRECTORY="$(dirname $(readlink -f $0))/../.."
+DEFAULT_PROJECTS_DIRECTORY="$(dirname $(readlink -f $0))/../../../.."
 PROJECTS_DIRECTORY=${DEFAULT_PROJECTS_DIRECTORY}
 # sanity check(s)
 [ ! -d ${PROJECTS_DIRECTORY} ] && echo "ERROR: invalid projects directory (was: \"${PROJECTS_DIRECTORY}\"), aborting" && exit 1

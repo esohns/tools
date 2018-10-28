@@ -1,0 +1,68 @@
+read: https://wiki.gnome.org/Projects/GTK+/Win32/MSVCCompilationOfGTKStack
+
+1. open a msvc prompt
+mkdir d:\projects\gtk_compilation\$(VS_VER)\$(Platform)
+mkdir d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\bin
+mkdir d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\include
+mkdir d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\lib
+
+set PATH=d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\bin;%PATH%;<path-containing-cmake.exe>
+set LIB=d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\lib;%LIB%
+set INCLUDE=d:\projects\gtk_compilation\$(VS_VER)\$(Platform)\include;%INCLUDE%
+
+* zlib *
+nmake /a /f win32/Makefile.msc LOC="-DASMV -DASMINF" OBJA="inffas32.obj match686.obj"
+copy /y zconf.h d:\projects\gtk_compilation\VS2010\win32\include
+copy /y zlib.h d:\projects\gtk_compilation\VS2010\win32\include
+copy /y zdll.lib d:\projects\gtk_compilation\VS2010\win32\lib
+copy /y zlib.lib d:\projects\gtk_compilation\VS2010\win32\lib
+copy /y zlib.dll d:\projects\gtk_compilation\VS2010\win32\bin
+
+* libpng *
+mkdir D:\projects\libpng-1.6.25\cmake_nmake
+cd D:\projects\libpng-1.6.25\cmake_nmake
+cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=[Release|Debug|RelWithDebugInfo] -DCMAKE_INSTALL_PREFIX=d:\projects\gtk_compilation\Vs2010\win32
+nmake
+[nmake test]
+nmake install
+
+* pixman *
+cd D:\projects\pixman
+install pixman-vsproj.zip
+start msys2 (via link)
+cd /d/projects/pixman
+export LD=link.exe
+./autogen.sh
+./configure --enable-timers --enable-gnuplot --enable-gtk --enable-libpng
+load/build solution
+copy /y D:\projects\pixman\pixman\pixman.h d:\projects\gtk_compilation\VS2010\win32\include
+copy /y D:\projects\pixman\pixman\pixman-version.h d:\projects\gtk_compilation\VS2010\win32\include
+copy /y D:\projects\pixman\build\win32\vs10\Debug\Win32\bin\pixman-1.lib d:\projects\gtk_compilation\VS2010\win32\lib
+copy /y D:\projects\pixman\build\win32\vs10\Debug\Win32\bin\pixman-1.dll d:\projects\gtk_compilation\VS2010\win32\bin
+
+* gettext *
+install gettext-runtime_0.18.1.1-2_win32.zip and gettext-runtime-dev_0.18.1.1-2_win32.zip from http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/
+copy /y D:\projects\gettext\include\*.h d:\projects\gtk_compilation\VS2010\win32\include
+copy /y D:\projects\gettext\lib\intl.lib d:\projects\gtk_compilation\VS2010\win32\lib
+copy /y D:\projects\gettext\bin\*.dll d:\projects\gtk_compilation\VS2010\win32\bin
+
+* libffi *
+part of glib (see below)
+
+* libepoxy *
+cd D:\projects\libepoxy
+copy /y D:\projects\libepoxy\include\epoxy d:\projects\gtk_compilation\VS2010\win32\include
+copy /y D:\projects\libepoxy\cmake\include\epoxy d:\projects\gtk_compilation\VS2010\win32\include
+copy /y D:\projects\libepoxy\cmake\Debug\epoxy1_static.lib d:\projects\gtk_compilation\VS2010\win32\lib
+
+* glib *
+download tarball from https://ftp.gnome.org/pub/GNOME/sources/glib/2.57/glib-2.57.3.tar.xz
+unzip to d:\projects\gtk_compilation
+mkdir d:\projects\glib_compilation
+cd D:\projects\glib_compilation
+python ..\meson\meson.py ..\gtk_compilation\glib-2.57.3 --buildtype debug --prefix D:\projects\gtk_compilation\VS2010\win32 --backend vs2010
+[Note: the ffi subproject requires some minor modifications]
+msbuild glib.sln
+
+* atk *
+

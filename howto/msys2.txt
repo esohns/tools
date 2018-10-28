@@ -1,0 +1,21 @@
+* update the package database and core system packages
+'pacman -Syu'
+
+* resolve issures with package downloads:
+'pacman -Sy && pacman -S pacman-mirrors'
+
+* search for package(s)
+'pacman -Ss <string>'
+
+* install compiler
+'pacman -S mingw-w64-<i686|x86_64|...>-toolchain'
+
+* remove package
+'pacman -Rns <package>'
+
+------------------------------------------
+
+#pacman -S base-devel
+#pacman -S msys2-devel
+pacman -S autoconf automake perl libtool pkg-config make mingw32/mingw-w64-i686-gtk2
+

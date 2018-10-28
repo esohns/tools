@@ -40,8 +40,8 @@ if NOT exist "%GITEXE%" (
 )
 
 @rem step1: garbage-collect git projects
-@rem        Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot yarp
-for %%A in (Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot yarp) do (
+@rem        ardrone Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot tools yarp
+for %%A in (ardrone Arkanoid ATCD libACENetwork libACEStream libCommon olinuxino splot tools yarp) do (
  if NOT exist "%PROJECTSROOTDIR%\%%A" (
   echo invalid git project ^(was: %%A^)^, exiting
   goto Failed
