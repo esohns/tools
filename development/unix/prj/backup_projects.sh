@@ -21,9 +21,10 @@ TARGET_DIRECTORY=${DEFAULT_TARGET_DIRECTORY}
 
 DEFAULT_GIT_BRANCH="master"
 
-SUB_DIRECTORIES="libCommon
-libACEStream
-libACENetwork"
+SUB_DIRECTORIES="Common
+ACEStream
+ACENetwork"
+#ardrone"
 
 BUNDLE_COMMAND="create"
 TAG="lastBackupBundle"

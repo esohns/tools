@@ -21,9 +21,10 @@ DEFAULT_GIT_BRANCH="master"
 cd $PROJECTS_DIRECTORY
 [ $? -ne 0 ] && echo "ERROR: failed to cd to \"${PROJECTS_DIRECTORY}\": $?, aborting" && exit 1
 
-SUB_DIRECTORIES="libCommon
-libACEStream
-libACENetwork"
+SUB_DIRECTORIES="Common
+ACEStream
+ACENetwork"
+#ardrone"
 for DIRECTORY in $SUB_DIRECTORIES
 do
  CURRENT_DIRECTORY="${PROJECTS_DIRECTORY}/${DIRECTORY}"

@@ -1,0 +1,4 @@
+
+# delete executable files from subdirectories
+find . -type f ! -name "*.*" | xargs file -e elf | grep executable | cut -d: -f 1 - | xargs rm -f
+

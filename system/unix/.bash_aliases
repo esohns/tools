@@ -6,4 +6,5 @@ alias ll='ls -l'
 alias lam='ls -la | more'
 
 alias p='pushd .; cd /mnt/win_d/projects'
+alias c=''
 

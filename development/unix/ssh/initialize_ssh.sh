@@ -11,6 +11,7 @@ command -v cat >/dev/null 2>&1 || { echo "cat is not installed, aborting" >&2; e
 command -v chmod >/dev/null 2>&1 || { echo "chmod is not installed, aborting" >&2; exit 1; }
 command -v cp >/dev/null 2>&1 || { echo "cp is not installed, aborting" >&2; exit 1; }
 command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting" >&2; exit 1; }
+#command -v echo >/dev/null 2>&1 || { echo "echo is not installed, aborting" >&2; exit 1; }
 command -v mkdir >/dev/null 2>&1 || { echo "mkdir is not installed, aborting" >&2; exit 1; }
 command -v readlink >/dev/null 2>&1 || { echo "readlink is not installed, aborting" >&2; exit 1; }
 #command -v test >/dev/null 2>&1 || { echo "test is not installed, aborting" >&2; exit 1; }
