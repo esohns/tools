@@ -10,7 +10,7 @@ command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting
 command -v git >/dev/null 2>&1 || { echo "git is not installed, aborting" >&2; exit 1; }
 command -v realpath >/dev/null 2>&1 || { echo "realpath is not installed, aborting" >&2; exit 1; }
 
-DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../.."
+DEFAULT_PROJECTS_ROOT_DIRECTORY="$(realpath -e $(dirname $(realpath -e $0))/../../../..)"
 PROJECTS_DIRECTORY=${DEFAULT_PROJECTS_ROOT_DIRECTORY}
 # sanity check(s)
 [ ! -d ${PROJECTS_DIRECTORY} ] && echo "ERROR: invalid project directory (was: \"${PROJECTS_DIRECTORY}\"), aborting" && exit 1
@@ -33,13 +33,13 @@ do
 
  git add --all >/dev/null 2>&1
  [ $? -ne 0 ] && echo "ERROR: failed to stage changes to \"${DIRECTORY}\": $?, aborting" && exit 1
- echo "staged changes to ${DIRECTORY}...DONE"
+ echo "staged changes to \"${DIRECTORY}\"...DONE"
  git commit -am "minor changes" >/dev/null 2>&1
  [ $? -ne 0 ] && echo "ERROR: failed to commit changes to \"${DIRECTORY}\": $?, continuing" && continue
- echo "committed changes to ${DIRECTORY}...DONE"
+ echo "committed changes to \"${DIRECTORY}\"...DONE"
  git push origin $DEFAULT_GIT_BRANCH >/dev/null 2>&1
  [ $? -ne 0 ] && echo "ERROR: failed to upstream changes to \"${DIRECTORY}\": $?, aborting" && exit 1
- echo "upstreamed changes to ${DIRECTORY}...DONE"
+ echo "upstreamed changes to \"${DIRECTORY}\"...DONE"
 
  echo "\"$DIRECTORY\"...DONE"
 done
