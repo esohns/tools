@@ -17,16 +17,23 @@ DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../../.."
 PROJECTS_ROOT_DIRECTORY="${DEFAULT_PROJECTS_ROOT_DIRECTORY}"
 
 # projects
-clean_projects_folder_git.sh
+clean_projects_folder.sh
 echo "cleaned projects"
 
 # profile
+if [ -r ~/.ccache/ccache.conf ]; then
+ cp -f ~/.ccache/ccache.conf ~/.ccache/ccache.conf.bak
+fi
 rm -rf ~/.ccache
+mkdir ~/.ccache
+if [ -r ~/ccache.conf.bak ]; then
+ mv -f ~/ccache.conf.bak ~/.ccache/ccache.conf
+fi
 echo "cleaned profile"
 
 # system
-rm -rf /var/cache
-rm -rf /var/tmp
+rm -rf /var/cache >/dev/null 2>&1
+rm -rf /var/tmp >/dev/null 2>&1
 echo "cleaned system"
 
 df -h

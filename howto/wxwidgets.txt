@@ -1,0 +1,5 @@
+* configure options
+./configure --enable-debug --enable-debug_info --enable-debug_flag --enable-debug_gdb \
+--enable-std_string --enable-std_string_conv_in_wxstring --enable-utf8 \
+--disable-optimise --with-opengl
+
