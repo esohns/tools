@@ -31,7 +31,7 @@ handle SIGILL pass nostop print
 handle SIGABRT pass nostop print
 handle SIGFPE pass nostop print
 handle SIGKILL pass nostop print
-handle SIGSEGV pass nostop print
+handle SIGSEGV pass stop print
 handle SIGPIPE pass nostop print
 
 handle SIGALRM pass nostop print

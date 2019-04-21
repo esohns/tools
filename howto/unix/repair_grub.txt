@@ -1,0 +1,23 @@
+1- Boot into the Live session and create a directory to mount your installation filesystem e.g. /mnt/sysimage
+
+2- Mount your / at /mnt/sysimage, since you have LVM you'll need to mount the logical volume for your /, note that I've never used LVM so you can't help you there...
+
+3- If you have a separate /boot partition (which in case of using LVM you most likely do), mount it at /mnt/sysimage/boot, this is most likely /dev/sda1, you should check /etc/fstab of the installed system after you mount /. As was posted by others /dev/sda2 is has a windows filesystem (NTFS probably) so it's not /boot.
+
+4- Mount bind these ones:
+
+mount --bind /dev /mnt/sysimage/dev
+mount --bind /proc /mnt/sysimage/proc
+mount --bind /sys /mnt/sysimage/sys 
+You do need the /dev mount bind, it seems to work without having to mount /proc or /sys.
+
+5- Then chroot:
+
+chroot /mnt/sysimage
+6- Reinstall grub2:
+
+grub2-install /dev/sda
+Someone at fedoraforum.org posted about an alternative method, after step 3 above you can reinstall grub2 like this:
+
+grub2-install --root-directory=/mnt/sysimage /dev/sda
+I did test it on a non-LVM setup (in a VM) and it seems to work. Edit: I forgot to add that using the 'grub2-install --root-directory' method would work best if the grub2 version in the Live session is the same (or as near as possible) as the installed system, i.e. using an F20 Live CD to re-install a grub2 on an F20 installed system.

@@ -1,0 +1,6 @@
+disable WAYLAND by uncommenting in file: /etc/gdm/custom.conf
+
+#WaylandEnable=false
+
+Reboot
+

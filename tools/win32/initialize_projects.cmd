@@ -32,6 +32,8 @@ set ProjectsRootDIR="D:\projects"
 if not "%1"=="" (
  set ProjectsRootDIR=%1
 )
+
+@rem mkdir
 if not exist "%ProjectsRootDIR%" (
  mkdir "%ProjectsRootDIR%"
  if %ERRORLEVEL% NEQ 0 (
@@ -42,12 +44,31 @@ if not exist "%ProjectsRootDIR%" (
  echo created "%ProjectsRootDIR%"^, continuing
 )
 
+set LibDIR="C:\lib"
+if not exist "%LibDIR%" (
+ mkdir "%LibDIR%"
+ if %ERRORLEVEL% NEQ 0 (
+  echo failed to mkdir "%LibDIR%"^, exiting
+  set RC=%ERRORLEVEL%
+  goto Failed
+ )
+ echo created "%LibDIR%"^, continuing
+)
+
+@rem set environment variables
 %setxEXE% PROJECTS_ROOT %ProjectsRootDIR%
 if %ERRORLEVEL% NEQ 0 (
  echo setx PROJECTS_ROOT failed^, exiting
  goto Failed
 )
 echo PROJECTS_ROOT set^, congratulations
+
+%setxEXE% LIB_ROOT %LibDIR%
+if %ERRORLEVEL% NEQ 0 (
+ echo setx LIB_ROOT failed^, exiting
+ goto Failed
+)
+echo LIB_ROOT set^, congratulations
 
 goto Clean_Up
 

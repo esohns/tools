@@ -2,3 +2,6 @@
 # delete executable files from subdirectories
 find . -type f ! -name "*.*" | xargs file -e elf | grep executable | cut -d: -f 1 - | xargs rm -f
 
+# for ACE, specifically
+find . -type f -executable -not -path "./.git/*" -not -path "./*/ChangeLogs/*" -not -path "./*/bin/*" -not -path "./*/contrib/*" -not -path "./*/docs/*" -not -path "./*/rpmbuild/*" -not -path "./*/debian/*" ! -name "*.*" $(printf "! -name %s " GNUmakefile README COPYRIGHT ChangeLog TO-DO TODO AUTHORS COPYING NEWS PROBLEM-REPORT-FORM THANKS VERSION) | xargs rm -f
+
