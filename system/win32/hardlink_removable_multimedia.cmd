@@ -11,8 +11,9 @@ set RC=0
 setlocal enabledelayedexpansion
 pushd . >NUL 2>&1
 
-set LinkDIR="%USERPROFILE%\My Documents\My Music\removable"
+@rem set LinkDIR="%USERPROFILE%\My Documents\My Music\removable"
 @rem set LinkDIR="%USERPROFILE%\media"
+set LinkDIR="%USERPROFILE%\Music\removable"
 if not "%1"=="" (
  set LinkDIR=%1
 )
@@ -32,7 +33,7 @@ echo setting link ^(was: %LinkDIR%^)^, continuing
 @rem  echo created "%TargetDIR%"^, continuing
 @rem )
 
-set MultimediaDRIVE=H:
+set MultimediaDRIVE=G:
 set target_is_set=0
 if not "%2"=="" (
  set MultimediaDRIVE=%2
@@ -72,7 +73,8 @@ echo linking directory ^(was: "%MultimediaDIR%"^)^, continuing
 @rem %MkLinkCMD% /D "%LinkDIR%" "%MultimediaDIR%"
 @rem set MkLinkCMD=fsutil
 @rem %MkLinkCMD% hardlink create "%LinkDIR%" "%MultimediaDIR%"
-set MkLinkCMD=linkd
+@rem set MkLinkCMD=linkd
+set MkLinkCMD=mklink /D
 %MkLinkCMD% %LinkDIR% %MultimediaDIR%
 if %ERRORLEVEL% NEQ 0 (
  echo failed to %MkLinkCMD% ^(was: "%LinkDIR% --> %MultimediaDIR%"^)^, exiting

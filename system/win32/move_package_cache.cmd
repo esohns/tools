@@ -11,7 +11,7 @@ set RC=0
 setlocal enabledelayedexpansion
 pushd . >NUL 2>&1
 
-set TargetDRIVE=E:\
+set TargetDRIVE=G:\
 set "TargetDIRName=Package Cache"
 if not "%1"=="" (
  set TargetDRIVE=%1
