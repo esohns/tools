@@ -1,0 +1,12 @@
+Open the Command Prompt. This can be done by triggering the Run -- Windows Key + R -- feature, and opening "cmd".
+Type "diskpart" to open the disk partitioning software. Accept the UAC security prompt, if asked.
+Insert the USB drive.
+Type "list disk". The program will then show you a list of all the physical drives (HDD, SSD, USB, etc.) that are attached.
+Identify the disk number of the USB drive (it can be recognized by looking at the size column; it's usually the last listed disk) and type "select disk X", where "X" is the disk number of your USB drive.
+Type "clean". This will erase the contents of the USB drive, so make sure you have the contents backed-up beforehand.
+Type "create partition primary". This command will create a primary partition on the USB drive.
+Type "select partition 1". This command will select the created partition.
+Type "active". This command will make the selected partition active.
+Type "format fs=ntfs quick". This command will format the created partition as NTFS.
+Type "assign". This command will assign a letter to the USB drive, which will make it show under Windows Explorer.
+Copy the contents of the Windows 8.1 DVD or ISO from the created folder on the USB drive.
