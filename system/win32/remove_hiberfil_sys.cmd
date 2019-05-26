@@ -16,7 +16,7 @@ if "%1" EQU "0" (
  set Argument=ON
 )
 
-set PowerCfgEXE=powercfg.exe
+set PowerCfgEXE=C:\Windows\System32\powercfg.exe
 if exist %PowerCfgEXE% goto Next
 echo invalid file ^(was: "%PowerCfgEXE%"^)^, exiting
 goto Failed
