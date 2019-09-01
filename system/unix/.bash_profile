@@ -12,9 +12,9 @@ export PATH
 PRJ_ROOT=/mnt/win_d/projects
 export PRJ_ROOT
 
-LIB_ROOT=/run/media/eriksohns/USB_BLACK/lib
+LIB_ROOT=/run/media/$USER/USB_BLACK/lib
 export LIB_ROOT
 
-ACE_ROOT=$LIB_ROOT/ACE_TAO/ACE
+#ACE_ROOT=$LIB_ROOT/ACE_TAO/ACE
+ACE_ROOT=/usr/local/src/ACE_wrappers
 export ACE_ROOT
-
