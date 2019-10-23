@@ -10,6 +10,6 @@
 # units generated from this file.
 #
 UUID=be190b4d-75c7-40c0-8c6e-f609a901cc8b /                       ext4    defaults        1 1
-UUID=FCA684F3A684B026                     /mnt/win_c              ntfs    permissions,big_writes,dev,suid        0 0
-UUID=34D4-5571                            /mnt/win_d              exfat   noatime,uid=1000,gid=1000        0 0
+UUID=7EC634B9C634738D                     /mnt/win_c              ntfs    permissions,big_writes,dev,suid        0 0
+UUID=19E16E301678BB0F                     /mnt/win_d              ntfs    permissions,big_writes,dev,suid        0 0
 UUID=e32d2abb-b563-457a-807b-c0094131d067 swap                    swap    defaults        0 0

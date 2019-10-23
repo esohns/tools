@@ -11,7 +11,7 @@ command -v cp >/dev/null 2>&1 || { echo "cp is not installed, aborting" >&2; exi
 command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting" >&2; exit 1; }
 command -v mkdir >/dev/null 2>&1 || { echo "mkdir is not installed, aborting" >&2; exit 1; }
 command -v readlink >/dev/null 2>&1 || { echo "readlink is not installed, aborting" >&2; exit 1; }
-command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&2; exit 1; }
+#command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&2; exit 1; }
 
 #DEFAULT_PLATFORM="linux"
 #PLATFORM=${DEFAULT_PLATFORM}
@@ -28,7 +28,8 @@ command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&
 shopt -s nullglob
 # shell
 SCRIPTS=".bash_aliases
-.bash_profile"
+.bash_profile
+.profile"
 for script in ${SCRIPTS}
 do
  SCRIPT_PATH="$(dirname $(readlink -f $0))/${script}"

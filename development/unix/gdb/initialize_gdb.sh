@@ -11,7 +11,7 @@ command -v cp >/dev/null 2>&1 || { echo "cp is not installed, aborting" >&2; exi
 command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting" >&2; exit 1; }
 command -v mkdir >/dev/null 2>&1 || { echo "mkdir is not installed, aborting" >&2; exit 1; }
 command -v readlink >/dev/null 2>&1 || { echo "readlink is not installed, aborting" >&2; exit 1; }
-command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&2; exit 1; }
+#command -v shopt >/dev/null 2>&1 || { echo "shopt is not installed, aborting" >&2; exit 1; }
 
 #DEFAULT_PLATFORM="linux"
 #PLATFORM=${DEFAULT_PLATFORM}
@@ -47,7 +47,7 @@ if [ ! -d ${GDBSCRIPTS_DIRECTORY} ]; then
  echo "created ${GDBSCRIPTS_DIRECTORY}..."
 fi
 
-shopt -s nullglob
+#shopt -s nullglob
 PROJECTS="Common
 ACEStream
 ACENetwork"

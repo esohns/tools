@@ -11,5 +11,6 @@ alias f='free_diskspace.sh'
 alias s='backup_projects.sh'
 alias u='update_projects.sh'
 
-alias p='pushd .; cd /mnt/win_d/projects'
+#alias p='pushd .; cd /mnt/win_d/projects'
+alias p='pushd .; cd /media/erik/data/projects'
 
