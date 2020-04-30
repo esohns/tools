@@ -10,12 +10,12 @@ command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting
 command -v git >/dev/null 2>&1 || { echo "git is not installed, aborting" >&2; exit 1; }
 command -v realpath >/dev/null 2>&1 || { echo "realpath is not installed, aborting" >&2; exit 1; }
 
-DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../.."
+DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../../../.."
 PROJECTS_DIRECTORY=${DEFAULT_PROJECTS_ROOT_DIRECTORY}
 # sanity check(s)
 [ ! -d ${PROJECTS_DIRECTORY} ] && echo "ERROR: invalid project directory (was: \"${PROJECTS_DIRECTORY}\"), aborting" && exit 1
 #echo "DEBUG: projects directory: \"${PROJECTS_DIRECTORY}\""
-DEFAULT_TARGET_DIRECTORY="/mnt/mmc/backup/projects"
+DEFAULT_TARGET_DIRECTORY="/run/media/erik/ARCHIVE/backup/projects"
 TARGET_DIRECTORY=${DEFAULT_TARGET_DIRECTORY}
 [ ! -d ${TARGET_DIRECTORY} ] && echo "ERROR: invalid target directory (was: \"${TARGET_DIRECTORY}\"), aborting" && exit 1
 
@@ -23,7 +23,10 @@ DEFAULT_GIT_BRANCH="master"
 
 SUB_DIRECTORIES="Common
 ACEStream
-ACENetwork"
+ACENetwork
+geo
+tools
+yarp"
 #ardrone"
 
 BUNDLE_COMMAND="create"

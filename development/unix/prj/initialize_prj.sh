@@ -33,6 +33,18 @@ PROJECTS_DIRECTORY="$(dirname $(readlink -f $0))/../../../.."
 #echo "PROJECTS_DIRECTORY=\"$PROJECTS_DIRECTORY\""
 
 shopt -s nullglob
+# shell
+SCRIPTS="ACE.ld.conf"
+for script in ${SCRIPTS}
+do
+ SCRIPT_PATH="$(dirname $(readlink -f $0))/${script}"
+ [ ! -r ${SCRIPT_PATH} ] && echo "ERROR: invalid script (was: \"${script}\"), aborting" && exit 1
+ sudo cp -f ${SCRIPT_PATH} /etc/ld.so.conf.d/ >/dev/null 2>&1
+ [ $? -ne 0 ] && echo "ERROR: failed to cp \"${SCRIPT_PATH}\" to \"${HOME}\": $?, aborting" && exit 1 
+ echo "copied \"$(basename ${SCRIPT_PATH})\"..."
+done
+
+#shopt -s nullglob
 PROJECTS="Common
 ACEStream
 ACENetwork"

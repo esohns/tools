@@ -9,7 +9,7 @@
 command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting" >&2; exit 1; }
 command -v realpath >/dev/null 2>&1 || { echo "realpath is not installed, aborting" >&2; exit 1; }
 
-DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../.."
+DEFAULT_PROJECTS_ROOT_DIRECTORY="$(dirname $(realpath -e $0))/../../../.."
 PROJECTS_DIRECTORY=${DEFAULT_PROJECTS_ROOT_DIRECTORY}
 # sanity check(s)
 [ ! -d ${PROJECTS_DIRECTORY} ] && echo "ERROR: invalid project directory (was: \"${PROJECTS_DIRECTORY}\"), aborting" && exit 1
@@ -27,7 +27,7 @@ do
  cd $CURRENT_DIRECTORY
  [ $? -ne 0 ] && echo "ERROR: failed to cd to \"${CURRENT_DIRECTORY}\": $?, aborting" && exit 1
 
- make -j4
+ ninja-build
  [ $? -ne 0 ] && echo "ERROR: failed to make \"${DIRECTORY}\": $?, aborting" && exit 1
  echo "\"$DIRECTORY\"...DONE"
 done

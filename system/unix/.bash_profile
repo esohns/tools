@@ -12,15 +12,19 @@ export PATH
 PRJ_ROOT=/mnt/win_d/projects
 export PRJ_ROOT
 
-#LIB_ROOT=/run/media/$USER/USB_BLACK/lib
-LIB_ROOT=/media/$USER/USB_BLACK/lib
+# Fedora
+LIB_ROOT=/run/media/$USER/USB_BLACK/lib
+# Ubuntu
+#LIB_ROOT=/media/$USER/USB_BLACK/lib
 export LIB_ROOT
 
 ACE_ROOT=$LIB_ROOT/ACE_TAO/ACE
 #ACE_ROOT=/usr/local/src/ACE_wrappers
 export ACE_ROOT
 
-#OO_SDK_HOME=/usr/lib64/libreoffice/sdk
-OO_SDK_HOME=/usr/lib/libreoffice/sdk
+# Fedora
+OO_SDK_HOME=/usr/lib64/libreoffice/sdk
+# Ubuntu
+#OO_SDK_HOME=/usr/lib/libreoffice/sdk
 export OO_SDK_HOME
 
