@@ -1,0 +1,8 @@
+version="9"
+logging="no"
+name="xsd-users"
+enabled="yes"
+type="17"
+action="Move to folder"
+actionValue="imap://eriksohns%40posteo.net@posteo.de/xsd-users"
+condition="AND (subject,contains,xsd-users)"

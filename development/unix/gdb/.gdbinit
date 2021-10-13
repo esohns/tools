@@ -25,7 +25,7 @@ set unwindonsignal on
 
 handle SIGHUP pass nostop print
 
-#handle SIGINT pass nostop print
+handle SIGINT pass nostop print
 handle SIGQUIT pass nostop print
 handle SIGILL pass nostop print
 handle SIGABRT pass nostop print
