@@ -41,11 +41,12 @@ do
   [ $? -ne 0 ] && echo "ERROR: failed to cd to \"${CURRENT_DIRECTORY}\": $?, aborting" && exit 1
   echo "DEBUG: processing: \"${DIRECTORY}/${DIRECTORY_2}\"..."
 
-# find */ -name "*.pch" -type f | echo - | xargs rm -f
- find . -name "*.pch" -type f -print | xargs rm -f
- [ $? -ne 0 ] && echo "ERROR: failed to find: $?, aborting" && exit 1
- find . -name "*.gch" -type f -print | xargs rm -f
- [ $? -ne 0 ] && echo "ERROR: failed to find: $?, aborting" && exit 1
+  find . -name "*.pch" -type f -print0 | tee /dev/fd/2 | xargs -0 rm -f
+  [ $? -ne 0 ] && echo "ERROR: failed to find: $?, aborting" && exit 1
+  find . -name "*.gch" -type f -print0 | tee /dev/fd/2 | xargs -0 rm -f
+  [ $? -ne 0 ] && echo "ERROR: failed to find: $?, aborting" && exit 1
+#  find . -name "stdafx.h" -type f -print0 | tee /dev/fd/2 | xargs -0 touch
+ # [ $? -ne 0 ] && echo "ERROR: failed to find: $?, aborting" && exit 1
 
   echo "DEBUG: processing: \"${DIRECTORY}/${DIRECTORY_2}\"...DONE"
  done
