@@ -1,5 +1,17 @@
+set confirm off
+
+#set worker-threads unlimited
+
+# These make gdb never pause in its output
+set pagination off
+#set height 0
+#set width 0
+
+# Display instructions in Intel format
+set disassembly-flavor intel
+
 #set debug auto-load on
-set script-extension strict
+#set script-extension strict
 
 # C
 set print pretty on
@@ -21,7 +33,7 @@ set breakpoint auto-hw
 # signals
 #set non-stop on
 #set target-async on
-set unwindonsignal on
+#set unwindonsignal off
 
 handle SIGHUP pass nostop print
 
@@ -82,17 +94,18 @@ handle SIG34 pass nostop noprint
 
 # python
 #set auto-load python-scripts on
-add-auto-load-safe-path /home/esohns/.gdb_debug
+#add-auto-load-safe-path /home/erik/.gdb_debug
 # load (python) visualizers
-source /home/esohns/.gdb_debug/libcommon_gdb_visualizers.py
+#source /home/erik/.gdb_debug/libcommon_gdb_visualizers.py
 #python execfile ("libcommon_gdb_visualizers.py")
 #python
 #exec(open("libcommon_gdb_visualizers.py").read())
 #end
+#add-auto-load-safe-path /usr/lib64/libthread_db-1.0.so
 
 # options
-show directories
-show auto-load safe-path
-info auto-load python-scripts
-info pretty-printer
+#show directories
+#show auto-load safe-path
+#info auto-load python-scripts
+#info pretty-printer
 

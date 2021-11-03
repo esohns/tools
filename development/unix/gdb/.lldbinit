@@ -1,0 +1,40 @@
+
+settings set target.inline-breakpoint-strategy always
+
+process handle SIGHUP -p true -s false
+process handle SIGINT -p true -s false
+process handle SIGQUIT -p true -s false
+process handle SIGILL -p true -s false
+#process handle SIGTRAP -p true -s false
+process handle SIGABRT -p true -s false
+process handle SIGBUS -p true -s false
+process handle SIGFPE -p true -s false
+process handle SIGKILL -p true -s false
+process handle SIGUSR1 -p true -s false
+#process handle SIGSEGV -p true -s false
+process handle SIGUSR2 -p true -s false
+process handle SIGPIPE -p true -s false
+process handle SIGALRM -p true -s false
+process handle SIGTERM -p true -s false
+process handle SIGSTKFLT -p true -s false
+process handle SIGCHLD -p true -s false
+process handle SIGCONT -p true -s false
+process handle SIGSTOP -p true -s false
+process handle SIGTSTP -p true -s false
+process handle SIGTTIN -p true -s false
+process handle SIGTTOU -p true -s false
+process handle SIGURG -p true -s false
+process handle SIGXCPU -p true -s false
+process handle SIGXFSZ -p true -s false
+process handle SIGVTALRM -p true -s false
+process handle SIGPROF -p true -s false
+process handle SIGWINCH -p true -s false
+process handle SIGIO -p true -s false
+process handle SIGPWR -p true -s false
+process handle SIGSYS -p true -s false
+process handle SIGPWR -p true -s false
+process handle SIG32 -p true -s false
+process handle SIG33 -p true -s false
+process handle SIGRTMIN -p true -s false
+#...
+process handle SIGRTMAX -p true -s false
