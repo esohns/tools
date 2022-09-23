@@ -11,6 +11,8 @@ alias f='free_diskspace.sh'
 alias s='backup_projects.sh'
 alias u='update_projects.sh'
 
+alias h='pushd .; cd /var/run/media/erik/USB_BLACK'
 alias p='pushd .; cd /mnt/win_d/projects'
-#alias p='pushd .; cd /media/erik/data/projects'
+
+alias d='sudo dnf update --enablerepo=*-debuginfo'
 
