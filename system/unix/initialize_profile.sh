@@ -27,17 +27,32 @@ command -v readlink >/dev/null 2>&1 || { echo "readlink is not installed, aborti
 
 shopt -s nullglob
 # shell
-SCRIPTS=".bash_aliases
-.bash_profile
-.profile"
+mkdir ${HOME}/.bashrc.d
+chmod 700 ${HOME}/.bashrc.d
+SCRIPTS="aliases
+environment
+path"
 for script in ${SCRIPTS}
 do
  SCRIPT_PATH="$(dirname $(readlink -f $0))/${script}"
  [ ! -r ${SCRIPT_PATH} ] && echo "ERROR: invalid script (was: \"${script}\"), aborting" && exit 1
- cp -f ${SCRIPT_PATH} ${HOME} >/dev/null 2>&1
- [ $? -ne 0 ] && echo "ERROR: failed to cp \"${SCRIPT_PATH}\" to \"${HOME}\": $?, aborting" && exit 1 
+ cp -f ${SCRIPT_PATH} ${HOME}/.bashrc.d >/dev/null 2>&1
+ [ $? -ne 0 ] && echo "ERROR: failed to cp \"${SCRIPT_PATH}\" to \"${HOME}/.bashrc.d\": $?, aborting" && exit 1 
  echo "copied \"$(basename ${SCRIPT_PATH})\"..."
+ chmod +x ${HOME}/.bashrc.d/${script}
 done
+
+#SCRIPTS=".bash_aliases
+#.bash_profile
+#.profile"
+#for script in ${SCRIPTS}
+#do
+# SCRIPT_PATH="$(dirname $(readlink -f $0))/${script}"
+# [ ! -r ${SCRIPT_PATH} ] && echo "ERROR: invalid script (was: \"${script}\"), aborting" && exit 1
+# cp -f ${SCRIPT_PATH} ${HOME} >/dev/null 2>&1
+# [ $? -ne 0 ] && echo "ERROR: failed to cp \"${SCRIPT_PATH}\" to \"${HOME}\": $?, aborting" && exit 1 
+# echo "copied \"$(basename ${SCRIPT_PATH})\"..."
+#done
 
 # development
 # gdb
