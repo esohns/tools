@@ -1,7 +1,7 @@
 PRJ_ROOT=/mnt/win_d/projects
 export PRJ_ROOT
 
-LIB_ROOT=/run/media/$USER/USB_BLACK/lib
+LIB_ROOT=/var/run/media/$USER/USB_128G/lib
 #LIB_ROOT=/media/$USER/USB_BLACK/lib
 export LIB_ROOT
 
