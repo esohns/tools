@@ -1,0 +1,2 @@
+set BAZEL_SH=C:/msys64/usr/bin/bash.exe
+bazel --output_base=C:\O build -c opt //tensorflow:libtensorflow_cc.so

@@ -1,0 +1,10 @@
+install Perl
+add perl to path C:\Perl64\bin and C:\Perl64\site\bin
+
+install NASM
+add nasm to path C:\Program\ Files\NASM
+
+cd I:\lib\openssl
+perl Configure
+nmake
+
