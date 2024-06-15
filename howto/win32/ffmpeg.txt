@@ -1,4 +1,4 @@
-export PATH=/c/Program\ Files/Microsoft\ Visual\ Studio/2022/Professional/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64:$PATH
+export PATH=/c/Program\ Files/Microsoft\ Visual\ Studio/2022/Professional/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64:$PATH
 
-./configure --target-os=win64 --arch=x86_64 --toolchain=msvc --enable-shared --enable-debug --enable-yasm
+./configure --target-os=win64 --arch=x86_64 --toolchain=msvc --enable-shared --enable-debug --enable-decoder=png --extra-ldflags="-LIBPATH:C:/vcpkg/installed/x64-windows/lib" --extra-cflags="-IC:/vcpkg/installed/x64-windows/include" --enable-zlib
 
