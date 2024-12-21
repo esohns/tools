@@ -1,17 +1,19 @@
 PRJ_ROOT=/mnt/win_d/projects
 export PRJ_ROOT
 
-LIB_ROOT=/var/run/media/$USER/USB_128G/lib
-#LIB_ROOT=/media/$USER/USB_BLACK/lib
+LIB_ROOT=/mnt/win_d/lib
 export LIB_ROOT
+
+VCPKG_ROOT=$LIB_ROOT/vcpkg
+export VCPKG_ROOT
+
+OO_SDK_HOME=/usr/lib64/libreoffice/sdk
+#OO_SDK_HOME=/usr/lib/libreoffice/sdk
+export OO_SDK_HOME
 
 MPC_ROOT=$LIB_ROOT/MPC
 export MPC_ROOT
 
 ACE_ROOT=$LIB_ROOT/ACE_TAO/ACE
-#ACE_ROOT=/usr/local/src/ACE_wrappers
 export ACE_ROOT
 
-OO_SDK_HOME=/usr/lib64/libreoffice/sdk
-#OO_SDK_HOME=/usr/lib/libreoffice/sdk
-export OO_SDK_HOME

@@ -1,2 +1,6 @@
 PATH="/mnt/win_d/projects/tools/system/unix:/mnt/win_d/projects/tools/development/unix/prj:$PATH"
 export PATH
+
+PATH="${VCPKG_ROOT}:$PATH"
+export PATH
+
