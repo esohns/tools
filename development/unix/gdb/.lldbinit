@@ -2,7 +2,7 @@
 settings set target.inline-breakpoint-strategy always
 
 process handle SIGHUP -p true -s false
-process handle SIGINT -p true -s false
+process handle SIGINT -p true -s true
 process handle SIGQUIT -p true -s false
 process handle SIGILL -p true -s false
 #process handle SIGTRAP -p true -s false
