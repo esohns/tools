@@ -9,7 +9,7 @@
 command -v dirname >/dev/null 2>&1 || { echo "dirname is not installed, aborting" >&2; exit 1; }
 command -v readlink >/dev/null 2>&1 || { echo "readlink is not installed, aborting" >&2; exit 1; }
 
-DEFAULT_BUILD_SUBDIR="cmake"
+DEFAULT_BUILD_SUBDIR="build"
 BUILD_SUBDIR=${DEFAULT_BUILD_SUBDIR}
 if [ $# -lt 1 ]; then
  echo "INFO: using default build directory: \"${BUILD_SUBDIR}\""

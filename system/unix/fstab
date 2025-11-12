@@ -9,7 +9,9 @@
 # After editing this file, run 'systemctl daemon-reload' to update systemd
 # units generated from this file.
 #
-UUID=be190b4d-75c7-40c0-8c6e-f609a901cc8b /                       ext4    defaults        1 1
-UUID=7EC634B9C634738D                     /mnt/win_c              ntfs    permissions,big_writes,dev,suid        0 0
-UUID=19E16E301678BB0F                     /mnt/win_d              ntfs    permissions,big_writes,dev,suid        0 0
-UUID=e32d2abb-b563-457a-807b-c0094131d067 swap                    swap    defaults        0 0
+UUID=2c30b4cf-2f82-43af-aca2-0b5eaf4fa280 /                       ext4    defaults        1 1
+UUID=F4DA4C53DA4C1470                     /mnt/win_c              ntfs    uid=1000,gid=1000,dmask=022,fmask=133,umask=0022,async,relatime,suid        0 0
+UUID=36683E03683DC303                     /mnt/win_d              ntfs    uid=1000,gid=1000,dmask=022,fmask=133,umask=0022,async,relatime,suid        0 0
+UUID=5747CCC14B347D6A                     /mnt/win_e              ntfs    uid=1000,gid=1000,dmask=022,fmask=133,umask=0022,async,relatime,suid        0 0
+UUID=b9a9b33b-a929-446a-9d52-353b032aaa9e swap                    swap    defaults        0 0
+
