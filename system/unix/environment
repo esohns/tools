@@ -1,7 +1,7 @@
 PRJ_ROOT=/mnt/win_d/projects
 export PRJ_ROOT
 
-LIB_ROOT=/mnt/win_d/lib
+LIB_ROOT=/mnt/win_e/lib
 export LIB_ROOT
 
 VCPKG_ROOT=$LIB_ROOT/vcpkg
