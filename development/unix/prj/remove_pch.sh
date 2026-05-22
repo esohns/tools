@@ -38,7 +38,7 @@ do
  do
   CURRENT_DIRECTORY="${PROJECTS_DIRECTORY}/${DIRECTORY}/${DIRECTORY_2}"
   cd $CURRENT_DIRECTORY
-  [ $? -ne 0 ] && echo "ERROR: failed to cd to \"${CURRENT_DIRECTORY}\": $?, aborting" && exit 1
+  [ $? -ne 0 ] && echo "ERROR: failed to cd to \"${CURRENT_DIRECTORY}\": $?, continuing" && continue
   echo "DEBUG: processing: \"${DIRECTORY}/${DIRECTORY_2}\"..."
 
   find . -name "*.pch" -type f -print0 | tee -a /dev/fd/2 | xargs -0 rm -f
